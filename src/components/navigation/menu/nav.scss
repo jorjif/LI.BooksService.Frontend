@@ -22,11 +22,12 @@
       width: 100%;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
       &:last-child {
         margin-top: auto;
       }
       &:hover {
-        background-color: var.$biege;
+        background-color: hsla(32, 65%, 62%, 0.1);
       }
       &_wrapper {
         display: flex;

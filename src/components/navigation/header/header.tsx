@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   return (
     <header className="page_frame_header">
       <Logo />
-      <UserPill />
+      <UserPill logged />
     </header>
   );
 };

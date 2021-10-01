@@ -1,0 +1,8 @@
+@use "../../variables" as var;
+.page_frame {
+  &_bg {
+    height: 100%;
+    width: 100%;
+    background: var.$background;
+  }
+}

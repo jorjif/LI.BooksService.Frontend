@@ -1,7 +1,13 @@
 import React from "react";
+import "./pageFrame.scss";
+import Header from "../navigation/header/header";
 
-const pageFrame: React.FC = () => {
-  return <div></div>;
+const PageFrame: React.FC = () => {
+  return (
+    <div className="page_frame_bg">
+      <Header />
+    </div>
+  );
 };
 
-export default pageFrame;
+export default PageFrame;

@@ -14,8 +14,6 @@ const UserPill: React.FC<props> = ({ logged, image }) => {
     <div className="page_frame_header_pill">
       <div className="page_frame_header_pill_content">
         {logged ? (
-          <div className="page_frame_header_pill_content_login">Войти</div>
-        ) : (
           <div className="page_frame_header_pill_content_profile">
             <div className="page_frame_header_pill_content_profile_img">
               <img alt="Avatar" src={image ? image : defaultImg} />
@@ -29,6 +27,10 @@ const UserPill: React.FC<props> = ({ logged, image }) => {
                 <Exit />
               </div>
             </div>
+          </div>
+        ) : (
+          <div className="page_frame_header_pill_content_login">
+            <div>Войти</div>
           </div>
         )}
       </div>

@@ -1,26 +1,30 @@
 import React from "react";
 import "./pill.scss";
 import { ReactComponent as Exit } from "./exit-logo.svg";
+import defaultImg from "./user-icon.png";
 
 interface props {
   logged?: boolean;
+  image?: string;
 }
 
-const UserPill: React.FC<props> = ({ logged }) => {
-  const userName: string = "user name";
+const UserPill: React.FC<props> = ({ logged, image }) => {
+  const userName: string = "user_name";
   return (
-    <div>
-      <div>
+    <div className="page_frame_header_pill">
+      <div className="page_frame_header_pill_content">
         {logged ? (
-          <div>Войти</div>
+          <div className="page_frame_header_pill_content_login">Войти</div>
         ) : (
-          <div>
-            <div>
-              <img alt="userAvatar" />
+          <div className="page_frame_header_pill_content_profile">
+            <div className="page_frame_header_pill_content_profile_img">
+              <img alt="Avatar" src={image ? image : defaultImg} />
             </div>
-            <div>
-              <div>{userName}</div>
-              <div>
+            <div className="page_frame_header_pill_content_profile_user">
+              <div className="page_frame_header_pill_content_profile_user_name">
+                {userName}
+              </div>
+              <div className="page_frame_header_pill_content_profile_user_exit">
                 <div>Выход</div>
                 <Exit />
               </div>

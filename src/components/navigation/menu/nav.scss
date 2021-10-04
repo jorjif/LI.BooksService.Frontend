@@ -1,58 +1,62 @@
 @use "../../../variables" as var;
-.page_frame_nav {
-  width: 4rem;
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  height: calc(100% - 4rem);
-  background-color: var.$paper-yellow;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  transition: width 200ms ease;
-  &_list {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    transition: 600ms;
-
-    &_element {
+.page_frame {
+  &_nav {
+    width: 4rem;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: calc(100% - 4rem);
+    background-color: var.$paper-yellow;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: width 200ms ease;
+    z-index: 97;
+    &_list {
       width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
-      &:last-child {
-        margin-top: auto;
-      }
-      &:hover {
-        background-color: hsla(32, 65%, 62%, 0.1);
-      }
-      &_wrapper {
+      list-style: none;
+      transition: 600ms;
+      z-index: 98;
+
+      &_element {
+        width: 100%;
         display: flex;
-        align-items: center;
-        height: 4rem;
-        transition: 600ms;
-      }
-      &_icon {
-        svg {
-          margin: 0 1rem;
+        flex-direction: column;
+        cursor: pointer;
+        &:last-child {
+          margin-top: auto;
+        }
+        &:hover {
+          background-color: hsla(32, 65%, 62%, 0.1);
+        }
+        &_wrapper {
+          display: flex;
+          align-items: center;
+          height: 4rem;
+          transition: 600ms;
+        }
+        &_icon {
+          svg {
+            margin: 0 1rem;
+          }
+        }
+        &_text {
+          display: none;
+          margin-left: 1rem;
         }
       }
-      &_text {
-        display: none;
-        margin-left: 1rem;
+    }
+    &:hover {
+      width: 16rem;
+      .page_frame_nav_list_element_text {
+        display: block;
       }
-    }
-  }
-  &:hover {
-    width: 16rem;
-    .page_frame_nav_list_element_text {
-      display: block;
-    }
-    .page_frame_nav_list {
-      align-items: flex-start;
+      .page_frame_nav_list {
+        align-items: flex-start;
+      }
     }
   }
 }

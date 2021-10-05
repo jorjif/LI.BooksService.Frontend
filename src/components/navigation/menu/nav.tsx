@@ -8,9 +8,13 @@ import { ReactComponent as Notifications } from "./icons/notifications.svg";
 import { ReactComponent as Trade } from "./icons/trade.svg";
 import { ReactComponent as User } from "./icons/user.svg";
 
-const Navbar: React.FC = () => {
+interface IProps {
+  startPage?: boolean;
+}
+
+const Navbar: React.FC<IProps> = ({ startPage }) => {
   return (
-    <nav className="page_frame_nav">
+    <nav className={startPage ? "page_frame_nav_hidden" : "page_frame_nav"}>
       <ul className="page_frame_nav_list">
         <NavComponent icon={<Home />}>Главная</NavComponent>
         <NavComponent icon={<Trade />}>Начать обмен</NavComponent>

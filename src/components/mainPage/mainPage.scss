@@ -1,0 +1,13 @@
+.page_mainPage {
+  &_icon {
+    aspect-ratio: 1 / 1;
+    flex: 1;
+  }
+  &_button {
+    background-color: #576233;
+    color: #fefae0;
+    &:hover {
+      background-color: hsl(74, 32%, 24%);
+    }
+  }
+}

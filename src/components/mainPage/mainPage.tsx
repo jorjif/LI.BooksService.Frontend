@@ -11,7 +11,9 @@ const MainPage: React.FC = () => {
     color: "#283618",
     maxWidth: "90%",
     display: "flex",
-    maxHeight: "90%",
+    margin: "1rem 1rem",
+    height: "auto",
+    flexWrap: "wrap",
   } as const;
   return (
     <Paper elevation={3} sx={PaperStyle}>

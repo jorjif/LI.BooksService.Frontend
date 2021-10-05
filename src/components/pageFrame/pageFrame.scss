@@ -13,5 +13,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &_startPage {
+      @extend .page_frame_main;
+      width: 100vw;
+      padding-left: 0;
+    }
   }
 }

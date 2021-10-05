@@ -10,4 +10,14 @@
       background-color: hsl(74, 32%, 24%);
     }
   }
+  &_paper {
+    background: #fefae0;
+    padding: 1rem 2rem;
+    color: #283618;
+    max-width: 90%;
+    display: flex;
+    margin: 1rem 1rem;
+    height: auto;
+    flex-wrap: wrap;
+  }
 }

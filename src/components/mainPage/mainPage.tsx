@@ -5,18 +5,8 @@ import "./mainPage.scss";
 import { ReactComponent as Kid } from "./kid.svg";
 
 const MainPage: React.FC = () => {
-  const PaperStyle: Object = {
-    bgcolor: "#FEFAE0",
-    p: "1rem 2rem",
-    color: "#283618",
-    maxWidth: "90%",
-    display: "flex",
-    margin: "1rem 1rem",
-    height: "auto",
-    flexWrap: "wrap",
-  } as const;
   return (
-    <Paper elevation={3} sx={PaperStyle}>
+    <Paper elevation={3} className="page_mainPage_paper">
       <Kid className="page_mainPage_icon" />
       <Box
         sx={{

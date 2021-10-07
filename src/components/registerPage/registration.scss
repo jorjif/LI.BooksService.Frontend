@@ -1,0 +1,13 @@
+@use "../../variables" as var;
+.page_mainPage {
+  &_h1 {
+    margin: 8px 0;
+    color: var.$font-green;
+    font-weight: 400;
+  }
+  &_h2 {
+    margin: 0 0 8px 0;
+    color: var.$biege;
+    font-weight: 300;
+  }
+}

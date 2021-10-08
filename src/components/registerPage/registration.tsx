@@ -12,6 +12,7 @@ const Registration: React.FC = () => {
     flexDirection: "column",
     alignItems: "flex-start",
   };
+
   return (
     <Paper elevation={3} className="page_registerPage_paper">
       <Kid className="page_registerPage_icon" />

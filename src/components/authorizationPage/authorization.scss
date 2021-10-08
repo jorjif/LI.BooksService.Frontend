@@ -1,0 +1,36 @@
+@use "../../variables" as var;
+@use "../mainPage/mainPage.scss";
+.page_authPage {
+  &_paper {
+    @extend .page_mainPage_paper;
+  }
+  &_icon {
+    @extend .page_mainPage_icon;
+  }
+  &_h1 {
+    margin: 8px 0;
+    color: var.$font-green;
+    font-weight: 400;
+  }
+  &_h2 {
+    margin: 0 0 8px 0;
+    color: var.$biege;
+    font-weight: 300;
+  }
+
+  &_button {
+    @extend .page_mainPage_button;
+    align-self: center;
+    margin: 8px;
+  }
+  &_link {
+    align-self: center;
+    color: var.$biege;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 16px;
+    &:hover {
+      color: hsl(32, 65%, 72%);
+    }
+  }
+}

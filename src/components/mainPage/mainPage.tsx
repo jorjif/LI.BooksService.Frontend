@@ -3,6 +3,8 @@ import { Box } from "@material-ui/system";
 import React from "react";
 import "./mainPage.scss";
 import { ReactComponent as Kid } from "./kid.svg";
+import { routeNames } from "../../routes";
+import { Link } from "react-router-dom";
 
 const MainPage: React.FC = () => {
   return (
@@ -30,9 +32,11 @@ const MainPage: React.FC = () => {
           своих друзей поучаствовать!
         </p>
         <div>
-          <Button variant="contained" className="page_mainPage_button">
-            Зарегистрироваться
-          </Button>
+          <Link to={routeNames.REGISTER}>
+            <Button variant="contained" className="page_mainPage_button">
+              Зарегистрироваться
+            </Button>
+          </Link>
         </div>
       </Box>
     </Paper>

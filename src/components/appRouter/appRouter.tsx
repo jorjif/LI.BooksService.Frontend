@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { publicRoutes } from "../../routes";
+import { publicRoutes, routeNames } from "../../routes";
 import PageFrame from "../pageFrame/pageFrame";
 
 const AppRouter: React.FC = () => {
@@ -17,6 +17,7 @@ const AppRouter: React.FC = () => {
             {route.component}
           </Route>
         ))}
+        <Redirect to={routeNames.START} />
       </Switch>
     </PageFrame>
   );

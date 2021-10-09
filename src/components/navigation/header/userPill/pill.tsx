@@ -2,6 +2,8 @@ import React from "react";
 import "./pill.scss";
 import { ReactComponent as Exit } from "./exit-logo.svg";
 import defaultImg from "./user-icon.png";
+import { Link } from "react-router-dom";
+import { routeNames } from "../../../../routes";
 
 interface props {
   startPage?: boolean;
@@ -15,7 +17,9 @@ const UserPill: React.FC<props> = ({ startPage, image }) => {
       <div className="page_frame_header_pill_content">
         {startPage ? (
           <div className="page_frame_header_pill_content_login">
-            <div>Войти</div>
+            <Link to={routeNames.LOGIN}>
+              <div>Войти</div>
+            </Link>
           </div>
         ) : (
           <div className="page_frame_header_pill_content_profile">

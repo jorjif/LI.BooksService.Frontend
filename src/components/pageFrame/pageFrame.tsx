@@ -16,7 +16,7 @@ const PageFrame: React.FC<props> = ({ children, startPage }) => {
   });
   return (
     <div className="page_frame_bg">
-      <Header />
+      <Header startPage={startPage} />
       <Navbar startPage={startPage} />
       <main className={mainStyle}>{children}</main>
     </div>

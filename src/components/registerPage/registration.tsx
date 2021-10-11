@@ -1,4 +1,4 @@
-import { Button, Paper } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import React from "react";
 import "./registration.scss";
 import { ReactComponent as Kid } from "../mainPage/kid.svg";
@@ -19,19 +19,9 @@ const Registration: React.FC = () => {
       <Box sx={boxStyles}>
         <h1 className="page_registerPage_h1">Книгомен</h1>
         <h2 className="page_regiserPage_h2">Регистрация</h2>
-        <RegisterInput />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            width: "100%",
-            m: "8px 0",
-          }}
-        >
-          <Button variant="contained" className="page_registerPage_button">
-            Зарегистрироваться
-          </Button>
-        </Box>
+        <RegisterInput onSubmit={(form: Object) => console.log(form)}>
+          Зарегистрироваться
+        </RegisterInput>
       </Box>
     </Paper>
   );

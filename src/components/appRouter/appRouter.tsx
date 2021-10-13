@@ -13,9 +13,12 @@ const AppRouter: React.FC = () => {
     <PageFrame startPage>
       <Switch>
         {publicRoutes.map((route) => (
-          <Route key={route.path} path={route.path} exact={route.exact}>
-            {route.component}
-          </Route>
+          <Route
+            key={route.path}
+            path={route.path}
+            exact={route.exact}
+            component={route.component}
+          />
         ))}
         <Redirect to={routeNames.START} />
       </Switch>

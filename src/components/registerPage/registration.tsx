@@ -18,7 +18,7 @@ const Registration: React.FC = () => {
       <Kid className="page_registerPage_icon" />
       <Box sx={boxStyles}>
         <h1 className="page_registerPage_h1">Книгомен</h1>
-        <h2 className="page_regiserPage_h2">Регистрация</h2>
+        <h2 className="page_registerPage_h2">Регистрация</h2>
         <RegisterInput onSubmit={(form: Object) => console.log(form)}>
           Зарегистрироваться
         </RegisterInput>

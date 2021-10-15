@@ -1,5 +1,6 @@
 import { Box, Pagination, Tab, Tabs } from "@material-ui/core";
 import React, { useState } from "react";
+import { CustomTabs, CustomTab } from "../customInputs/tabs";
 import TextInput from "../customInputs/TextInput";
 
 /*function tabProps(index: number) {
@@ -29,11 +30,11 @@ const TradeMenu: React.FC<IProps> = ({ children }) => {
         }}
       >
         <TextInput size="small" />
-        <Tabs value={filter} onChange={handleFilterChange}>
-          <Tab label="Все" />
-          <Tab label="Идет обмен" />
-          <Tab label="Завершенные" />
-        </Tabs>
+        <CustomTabs value={filter} textColor="inherit" onChange={handleFilterChange}>
+          <CustomTab label="Все" />
+          <CustomTab label="Идет обмен" />
+          <CustomTab label="Завершенные" />
+        </CustomTabs>
       </Box>
       {children}
       <Pagination

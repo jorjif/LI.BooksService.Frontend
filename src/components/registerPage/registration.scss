@@ -1,9 +1,6 @@
 @use "../../variables" as var;
 @use "../mainPage/mainPage.scss";
 .page_registerPage {
-  &_paper {
-    @extend .page_mainPage_paper;
-  }
   &_icon {
     @extend .page_mainPage_icon;
   }

@@ -17,7 +17,7 @@ const AuthorizationPage: React.FC = () => {
     alignItems: "flex-start",
   };
   return (
-    <Paper className="page_authPage_paper" elevation={3}>
+    <Paper className="page_paper" elevation={3}>
       <Kid className="page_authPage_icon" />
       <Box sx={boxStyles}>
         <h1 className="page_authPage_h1">Кингомен</h1>

@@ -1,13 +1,17 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { publicRoutes, routeNames } from "../../routes";
+import { privateRoutes, publicRoutes, routeNames } from "../../routes";
 import PageFrame from "../pageFrame/pageFrame";
 
 const AppRouter: React.FC = () => {
-  const auth = false;
+  const auth = true;
   return auth ? (
     <PageFrame>
-      <Switch></Switch>
+      <Switch>
+        {privateRoutes.map((route) => (
+          <Route key={route.path} {...route} />
+        ))}
+      </Switch>
     </PageFrame>
   ) : (
     <PageFrame startPage>

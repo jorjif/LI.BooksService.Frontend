@@ -1,20 +1,15 @@
-import { Box, Pagination, Tab, Tabs } from "@material-ui/core";
-import React, { useState } from "react";
+import { Box, Pagination } from "@material-ui/core";
+import React from "react";
 import { CustomTabs, CustomTab } from "../customInputs/tabs";
 import TextInput from "../customInputs/TextInput";
 
-/*function tabProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}*/
 interface IProps {
   children: React.ReactNode;
+  filter: number;
+  setFilter: Function;
 }
 
-const TradeMenu: React.FC<IProps> = ({ children }) => {
-  const [filter, setFilter] = useState(0);
+const TradeMenu: React.FC<IProps> = ({ children, filter, setFilter }) => {
   const handleFilterChange = (event: React.SyntheticEvent, newFilter: number) => {
     setFilter(newFilter);
   };

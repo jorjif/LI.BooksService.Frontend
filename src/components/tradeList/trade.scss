@@ -1,0 +1,19 @@
+@use "../../variables" as var;
+@use "../mainPage/mainPage.scss";
+
+.page_tradePage {
+  &_cathegory {
+    font-size: 1rem;
+    margin: 8px;
+    text-align: start;
+    color: var.$font-green;
+  }
+  &_header {
+    color: var.$light-green;
+  }
+  &_h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var.$font-green;
+  }
+}

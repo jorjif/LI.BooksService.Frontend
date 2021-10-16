@@ -14,7 +14,7 @@ const Registration: React.FC = () => {
   };
 
   return (
-    <Paper elevation={3} className="page_registerPage_paper">
+    <Paper elevation={3} className="page_paper">
       <Kid className="page_registerPage_icon" />
       <Box sx={boxStyles}>
         <h1 className="page_registerPage_h1">Книгомен</h1>

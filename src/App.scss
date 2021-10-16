@@ -7,3 +7,18 @@
   width: 100%;
   height: 100%;
 }
+
+.page_paper {
+  background: #fefae0;
+  padding: 1rem 2rem;
+  color: #283618;
+  max-width: 90%;
+  display: flex;
+  margin: 1rem 1rem;
+  height: auto;
+  transition: all 300ms;
+  &_column {
+    @extend .page_paper;
+    flex-direction: column;
+  }
+}

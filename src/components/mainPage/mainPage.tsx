@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const MainPage: React.FC = () => {
   return (
-    <Paper elevation={3} className="page_mainPage_paper">
+    <Paper elevation={3} className="page_paper">
       <Kid className="page_mainPage_icon" />
       <Box
         sx={{

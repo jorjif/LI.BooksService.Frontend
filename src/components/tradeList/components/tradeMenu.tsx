@@ -1,7 +1,7 @@
 import { Box, Pagination } from "@material-ui/core";
 import React from "react";
-import { CustomTabs, CustomTab } from "../customInputs/tabs";
-import TextInput from "../customInputs/TextInput";
+import { CustomTabs, CustomTab } from "../../customInputs/tabs";
+import TextInput from "../../customInputs/TextInput";
 
 interface IProps {
   children: React.ReactNode;

@@ -1,0 +1,27 @@
+@use "../../variables" as var;
+.page_userPage {
+  &_subHeader {
+    margin: 0.5rem 1rem 0.5rem 0;
+    color: var.$font-green;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  &_header {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    color: var.$font-green;
+  }
+  &_imgBox {
+    border-radius: 60px;
+    min-width: 70px;
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      min-width: 70px;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

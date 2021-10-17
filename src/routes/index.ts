@@ -4,6 +4,7 @@ import MainPage from "../components/mainPage/mainPage";
 import Registration from "../components/registerPage/registration";
 import Exchange from "../components/Exchange/Exchange";
 import TradeList from "../components/tradeList/tradeList";
+import UserPage from "../components/userPage/userPage";
 
 export interface IRoute {
   path: string;
@@ -17,6 +18,7 @@ export enum routeNames {
   REGISTER = "/register",
   EXCHANGE = "/exchange",
   TRADES = "/trades",
+  PROFILE = "/profile",
 }
 
 export const publicRoutes: IRoute[] = [
@@ -27,4 +29,5 @@ export const publicRoutes: IRoute[] = [
 ];
 export const privateRoutes: IRoute[] = [
   { path: routeNames.TRADES, exact: true, component: TradeList },
+  { path: routeNames.PROFILE, exact: true, component: UserPage },
 ];

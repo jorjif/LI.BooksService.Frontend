@@ -4,20 +4,19 @@ import { Formik, Form } from 'formik'
 
 import GiveForm from './Forms/GiveForm'
 import GetForm from './Forms/GetForm'
+import AddressForm from './Forms/AddressForm'
 
 import formInitialValues from './FormModel/formInitialValues'
 import validate from './FormModel/validate'
 
-const steps = ['Хочу обменять', 'Хочу получить']
+const steps = ['Хочу обменять', 'Хочу получить', 'Адрес доставки']
 
 const renderStepContent = (step: number, errors: Object, touched: Object ) => {
   switch (step) {
-    case 0:
-      return <GiveForm errors={errors} touched={touched} />
-    case 1:
-      return <GetForm />
-    default:
-      return <GiveForm errors={errors} touched={touched} />
+    case  0: return <GiveForm errors={errors} touched={touched} />
+    case  1: return <GetForm />
+    case  2: return <AddressForm errors={errors} touched={touched} />
+    default: return <GiveForm errors={errors} touched={touched} />
   }
 }
 
@@ -88,6 +87,17 @@ const Exchange: React.FC = () => {
                       </Button>
                     )}
                     <Box sx={{ flex: '1 1 auto' }} />
+                    
+                    {step === 2 && (
+                      <Button
+                        sx={{ marginRight: '10px' }}
+                        variant="contained"
+                        onClick={() => setStep(step + 1)}
+                      >
+                        Пропустить
+                      </Button>
+                    )}
+
                     <Button
                       variant="contained"
                       type="submit"

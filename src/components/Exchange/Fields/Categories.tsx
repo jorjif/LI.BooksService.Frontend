@@ -6,81 +6,81 @@ import { Field, ErrorMessage } from 'formik'
 
 import './Categories.scss'
 
-interface RenderTree {
+interface ICategories {
   name: string
-  children?: readonly RenderTree[]
+  children?: readonly ICategories[]
 }
 
-const CATEGORIES: RenderTree[] = [
-    {
-      name: 'Жанры',
-			children: [
-				{ name: 'Детектив' },
-				{ name: 'Детские книги' },
-				{ name: 'История'	},
-				{ name: 'Мемуары'	},
-				{ name: 'Приключения' },
-				{ name: 'Психология' },
-				{ name: 'Фантастика' },
-				{ name: 'Эзотерика' },
-			]
-    },
-		{
-      name: 'Область наук',
-      children: [
-        { name: '1' },
-				{ name: '2' },
-				{ name: '3'	},
-      ]
-    },
-		{
-      name: 'Состояние',
-      children: [
-        { name: '4' },
-				{ name: '5' },
-				{ name: '6'	},
-      ]
-    },
-		{
-      name: 'Обложка',
-      children: [
-        { name: '7' },
-				{ name: '8' },
-				{ name: '9'	},
-      ]
-    },
-		{
-      name: 'Лауреат',
-      children: [
-        { name: '10' },
-				{ name: '11' },
-				{ name: '12' },
-      ]
-    },
-		{
-      name: 'Экранизация',
-      children: [
-        { name: '13' },
-				{ name: '14' },
-				{ name: '15' },
-      ]
-    },
-		{
-      name: 'Язык издания',
-      children: [
-        { name: '16' },
-				{ name: '17' },
-				{ name: '18' },
-      ]
-    },
+const CATEGORIES: ICategories[] = [
+  {
+    name: 'Жанры',
+    children: [
+      { name: 'Детектив' },
+      { name: 'Детские книги' },
+      { name: 'История'	},
+      { name: 'Мемуары'	},
+      { name: 'Приключения' },
+      { name: 'Психология' },
+      { name: 'Фантастика' },
+      { name: 'Эзотерика' },
+    ]
+  },
+  {
+    name: 'Область наук',
+    children: [
+      { name: '1' },
+      { name: '2' },
+      { name: '3'	},
+    ]
+  },
+  {
+    name: 'Состояние',
+    children: [
+      { name: '4' },
+      { name: '5' },
+      { name: '6'	},
+    ]
+  },
+  {
+    name: 'Обложка',
+    children: [
+      { name: '7' },
+      { name: '8' },
+      { name: '9'	},
+    ]
+  },
+  {
+    name: 'Лауреат',
+    children: [
+      { name: '10' },
+      { name: '11' },
+      { name: '12' },
+    ]
+  },
+  {
+    name: 'Экранизация',
+    children: [
+      { name: '13' },
+      { name: '14' },
+      { name: '15' },
+    ]
+  },
+  {
+    name: 'Язык издания',
+    children: [
+      { name: '16' },
+      { name: '17' },
+      { name: '18' },
+    ]
+  },
 ]
 
-interface props {
+interface IProps {
   type: string
 }
 
-const Categories: React.FC<props> = ({ type }) => {
-  const renderTree = (nodes: RenderTree) => (
+const Categories: React.FC<IProps> = ({ type }) => {
+  const renderTree = (nodes: ICategories) => (
     <TreeItem
       sx={{
         '& .MuiTreeItem-content': {
@@ -115,8 +115,8 @@ const Categories: React.FC<props> = ({ type }) => {
     </TreeItem>
   )
 
-	return (
-		<>
+  return (
+    <>
       <TreeView
         sx={{
           height: 'inherit',
@@ -128,10 +128,10 @@ const Categories: React.FC<props> = ({ type }) => {
       >
         {CATEGORIES.map(item => renderTree(item))}
       </TreeView>
-      
+
       <ErrorMessage component="div" className="error" name={type} />
     </>
-	)
+  )
 }
 
 export default Categories

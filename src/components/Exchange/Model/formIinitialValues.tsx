@@ -1,12 +1,12 @@
-export interface IFormInitialVallues {
+export interface IFormInitialValues {
+  bookName?: string
   authorName?: string
   authorSurname?: string
-  bookName?: string
   isbn?: string
   yearPublishing?: string
   giveCategories?: any
   getCategories?: any
-  zipCode? :any
+  zipCode?: string
   city?: string
   street?: string
   structure?: string
@@ -17,14 +17,14 @@ export interface IFormInitialVallues {
   patronymic?: string
 }
 
-const formInitialValues: IFormInitialVallues = {
+const formInitialValues: IFormInitialValues = {
   authorName: '',
   authorSurname: '',
   bookName: '',
   isbn: '',
   yearPublishing: '',
-  giveCategories: [],
-  getCategories: [],
+  giveCategories: '',
+  getCategories: '',
   zipCode: '',
   city: '',
   street: '',

@@ -6,36 +6,33 @@ import GiveForm from './Forms/GiveForm'
 import GetForm from './Forms/GetForm'
 import AddressForm from './Forms/AddressForm'
 
-import formInitialValues from './FormModel/formInitialValues'
-import validate from './FormModel/validate'
+import formInitialValues from './Model/formIinitialValues'
+import validate from './Model/validate'
 
 const steps = ['Хочу обменять', 'Хочу получить', 'Адрес доставки']
 
-const renderStepContent = (step: number, errors: Object, touched: Object ) => {
+const renderStepContent = (step: number) => {
   switch (step) {
-    case  0: return <GiveForm errors={errors} touched={touched} />
-    case  1: return <GetForm />
-    case  2: return <AddressForm errors={errors} touched={touched} />
-    default: return <GiveForm errors={errors} touched={touched} />
+    case 0  : return <GiveForm />
+    case 1  : return <GetForm />
+    case 2  : return <AddressForm />
+    default : return <GiveForm  />
   }
 }
 
 const Exchange: React.FC = () => {
-	const [step, setStep] = useState(0)
+  const [step, setStep] = useState(0)
   const isLastStep = step === steps.length - 1
+
+  const handleReset = () => setStep(0)
+  const handleBack  = () => setStep(step - 1)
+  const handleSkip  = () => setStep(step + 1)
 
   const handleSubmit = (values: Object, actions: any) => {
     if (!isLastStep) actions.setTouched({})
+    else console.log(values)
     actions.setSubmitting(false)
     setStep(step + 1)
-  }
-
-  const handleBack = () => {
-    setStep(step - 1)
-  }
-
-  const handleReset = () => {
-    setStep(0)
   }
 
   return (
@@ -43,13 +40,7 @@ const Exchange: React.FC = () => {
       <Paper elevation={10} sx={{ display: 'flex', flexDirection: 'column', width: '100%', p: 4 }}>
         <Box sx={{ height: '64px' }}>
           <Stepper activeStep={step}>
-            {steps.map(label => {
-              return (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              )
-            })}
+            {steps.map(label => <Step key={label}><StepLabel>{label}</StepLabel></Step>)}
           </Stepper>
         </Box>
 
@@ -69,14 +60,12 @@ const Exchange: React.FC = () => {
               validate={validate[step]}
               onSubmit={handleSubmit}
             >
-              {({ errors, touched, isSubmitting }) => (
+              {() => (
                 <Form style={{ display: 'flex', flexDirection: 'column', height: 'calc(100% - 64px)' }}>
-                  <Box
-                    className='form-content'
-                    sx={{ height: 'calc(100% - 60px)' }}
-                  >
-                    {renderStepContent(step, errors, touched)}
+                  <Box className='form-content' sx={{ height: 'calc(100% - 60px)' }}>
+                    {renderStepContent(step)}
                   </Box>
+
                   <Box sx={{ display: 'flex', flexDirection: 'row', height: '36px', marginTop: '24px' }}>
                     {step !== 0 && (
                       <Button
@@ -86,22 +75,25 @@ const Exchange: React.FC = () => {
                         Назад
                       </Button>
                     )}
+
                     <Box sx={{ flex: '1 1 auto' }} />
-                    
+
                     {step === 2 && (
-                      <Button
-                        sx={{ marginRight: '10px' }}
-                        variant="contained"
-                        onClick={() => setStep(step + 1)}
-                      >
-                        Пропустить
-                      </Button>
+                      <>
+                        <Button
+                          variant="contained"
+                          onClick={handleSkip}
+                        >
+                          Пропустить
+                        </Button>
+
+                        <Box sx={{ marginRight: '10px' }} />
+                      </>
                     )}
 
                     <Button
                       variant="contained"
                       type="submit"
-                      disabled={isSubmitting}
                     >
                       {isLastStep ? 'Подтвердить' : 'Далее'}
                     </Button>

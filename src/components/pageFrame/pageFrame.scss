@@ -1,9 +1,26 @@
 @use "../../variables" as var;
 .page_frame {
   &_bg {
+    z-index: 0;
+    position: relative;
     height: 100%;
     width: 100%;
     background: var.$background;
+    overflow: hidden;
+  }
+  &_bg::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url(./assets/bg.png);
+    background-position: top center;
+    background-size: 10em;
+    opacity: 0.1;
+    transform: rotate(-45deg);
   }
   &_main {
     padding: 4rem 0 0 4rem;

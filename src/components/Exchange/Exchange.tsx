@@ -67,36 +67,18 @@ const Exchange: React.FC = () => {
                   </Box>
 
                   <Box sx={{ display: 'flex', flexDirection: 'row', height: '36px', marginTop: '24px' }}>
-                    {step !== 0 && (
-                      <Button
-                        variant="contained"
-                        onClick={handleBack}
-                      >
-                        Назад
-                      </Button>
-                    )}
+                    {step !== 0 && (<Button onClick={handleBack}>Назад</Button>)}
 
                     <Box sx={{ flex: '1 1 auto' }} />
 
                     {step === 2 && (
                       <>
-                        <Button
-                          variant="contained"
-                          onClick={handleSkip}
-                        >
-                          Пропустить
-                        </Button>
-
+                        <Button onClick={handleSkip}>Пропустить</Button>
                         <Box sx={{ marginRight: '10px' }} />
                       </>
                     )}
 
-                    <Button
-                      variant="contained"
-                      type="submit"
-                    >
-                      {isLastStep ? 'Подтвердить' : 'Далее'}
-                    </Button>
+                    <Button type="submit">{isLastStep ? 'Подтвердить' : 'Далее'}</Button>
                   </Box>
                 </Form>
               )}

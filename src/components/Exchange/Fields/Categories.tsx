@@ -84,10 +84,10 @@ const Categories: React.FC<IProps> = ({ type }) => {
     <TreeItem
       sx={{
         '& .MuiTreeItem-content': {
-          padding: '8px'
+          padding: '6px'
         },
         '& .MuiCheckbox-root': {
-          padding: '0 8px 0 0'
+          padding: '0 6px 0 0'
         }
       }}
       key={nodes.name}

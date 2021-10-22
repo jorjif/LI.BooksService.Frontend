@@ -11,8 +11,6 @@ const TextInput: React.FC<IProps> = (props) => {
 
   return (
     <TextField
-      variant="standard"
-      fullWidth
       error={meta.touched && !!meta.error}
       helperText={meta.touched && !!meta.error ? meta.error : ' '}
       {...field}

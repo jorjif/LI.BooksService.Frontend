@@ -28,7 +28,7 @@ interface IProps {
   type?: string;
 }
 
-const TextInput: React.FC<IProps> = ({ name, label, required }) => {
+const TextInput: React.FC<IProps> = ({ name, label, type, required }) => {
   const [field, meta] = useField(name);
   const textfieldConfiguration: Object = {
     ...field,
@@ -36,6 +36,7 @@ const TextInput: React.FC<IProps> = ({ name, label, required }) => {
     label,
     required,
     fullWidth: true,
+    type: type || "text",
   };
 
   return (

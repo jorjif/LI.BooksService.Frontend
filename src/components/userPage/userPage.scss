@@ -24,4 +24,29 @@
       height: auto;
     }
   }
+
+  &_edit {
+    cursor: pointer;
+    svg {
+      fill: hsl(12, 88%, 50%);
+    }
+  }
+
+  &_button {
+    background-color: hsl(74, 32%, 29%);
+    color: #fefae0;
+    margin: 8px 0;
+    &:hover {
+      background-color: hsl(74, 32%, 24%);
+    }
+  }
+
+  &_delete {
+    background-color: var.$exit-red;
+    color: #fefae0;
+    margin: 8px 0;
+    &:hover {
+      background-color: hsl(12, 88%, 50%);
+    }
+  }
 }

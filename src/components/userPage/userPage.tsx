@@ -4,7 +4,7 @@ import UserData, { boilerplate } from "./components/userData";
 import { ReactComponent as Pencil } from "./pencil.svg";
 import avatar from "./avatar.png";
 import "./userPage.scss";
-import RegisterInput from "../registerInput/registerInput";
+import EditData from "./components/changeData";
 
 const UserPage: React.FC = () => {
   const [isChanged, setChanged] = useState(false);
@@ -19,9 +19,9 @@ const UserPage: React.FC = () => {
       <Box>
         <Box component="header" sx={{ display: "flex", alignItems: "center" }}>
           <h1 className="page_userPage_header">{boilerplate.login}</h1>
-          <Pencil onClick={startChanging} />
+          <Pencil onClick={startChanging} className="page_userPage_edit" />
         </Box>
-        {isChanged ? <RegisterInput>Сохранить</RegisterInput> : <UserData />}
+        {isChanged ? <EditData /> : <UserData />}
       </Box>
     </Paper>
   );

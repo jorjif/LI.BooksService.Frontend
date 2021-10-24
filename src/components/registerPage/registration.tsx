@@ -6,8 +6,8 @@ import { Box } from "@material-ui/system";
 import RegisterInput, { registerInitValues } from "../registerInput/registerInput";
 import { registerValidation } from "../registerInput/validation";
 import "../mainPage/mainPage.scss";
-import { Form, Formik, useFormik } from "formik";
-import AdressInput, { AdressInitial } from "../registerInput/adress";
+import { Form, Formik } from "formik";
+import AdressInput, { adressInitial } from "../registerInput/adress";
 
 const Registration: React.FC = () => {
   const boxStyles: Object = {
@@ -24,7 +24,10 @@ const Registration: React.FC = () => {
         <h2 className="page_registerPage_h2">Регистрация</h2>
         <Formik
           onSubmit={(values) => console.log(values)}
-          initialValues={{ ...registerInitValues, adress: [{ ...AdressInitial }] }}
+          initialValues={{
+            ...registerInitValues,
+            adress: [adressInitial],
+          }}
           validate={registerValidation}
         >
           <Form>

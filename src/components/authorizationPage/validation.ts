@@ -18,8 +18,8 @@ export const validation = ({ password, login }: ILogin) => {
   if (!login) {
     errors.login = "Введите логин";
   } else if (
-    /[+=-><]/.test(login) ||
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(login)
+    /[+=-><]/.test(login)
+    //!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(login)
   ) {
     errors.login = "Логин не должен содержать спецсимволов";
   }

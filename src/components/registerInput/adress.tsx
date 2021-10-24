@@ -1,6 +1,5 @@
 import { Box } from "@material-ui/system";
 import TextInput from "../customInputs/TextInput";
-import { Form } from "formik";
 import React from "react";
 
 interface IProps {
@@ -16,7 +15,7 @@ export interface IAdressData {
   index: string;
 }
 
-export const AdressInitial: IAdressData = {
+export const adressInitial: IAdressData = {
   city: "",
   street: "",
   building: "",

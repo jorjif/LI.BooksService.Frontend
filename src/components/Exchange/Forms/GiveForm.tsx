@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core'
 import TextInput from '../Fields/TextInput'
 import Categories from '../Fields/Categories'
 
-import { ReactComponent as CarImg } from './assets/Car.svg'
+import { ReactComponent as CarImg } from '../assets/Car.svg'
 
 const GiveForm: React.FC = () => (
   <Grid container sx={{ height: '100%' }}>

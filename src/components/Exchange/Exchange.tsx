@@ -5,17 +5,19 @@ import { Formik, Form } from 'formik'
 import GiveForm from './Forms/GiveForm'
 import GetForm from './Forms/GetForm'
 import AddressForm from './Forms/AddressForm'
+import ExchangeCard from './ExchangeCard/ExchangeCard'
 
 import formInitialValues from './Model/formIinitialValues'
 import validate from './Model/validate'
 
-const steps = ['Хочу обменять', 'Хочу получить', 'Адрес доставки']
+const steps = ['Хочу обменять', 'Хочу получить', 'Адрес доставки', 'Карточка обмена']
 
 const renderStepContent = (step: number) => {
   switch (step) {
     case 0  : return <GiveForm />
     case 1  : return <GetForm />
     case 2  : return <AddressForm />
+    case 3  : return <ExchangeCard />
     default : return <GiveForm  />
   }
 }

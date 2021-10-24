@@ -3,7 +3,7 @@ import { Grid, Paper, Typography } from '@material-ui/core'
 
 import Categories from '../Fields/Categories'
 
-import { ReactComponent as CarImg } from './assets/Car.svg'
+import { ReactComponent as CarImg } from '../assets/Car.svg'
 
 const GetForm: React.FC = () => (
   <Grid container sx={{ height: '100%' }}>

@@ -1,7 +1,7 @@
 import { Box, Pagination } from "@material-ui/core";
 import React from "react";
 import { CustomTabs, CustomTab } from "../../customInputs/tabs";
-import TextInput from "../../customInputs/TextInput";
+import { TextInputStyled } from "../../customInputs/TextInput";
 
 interface IProps {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ const TradeMenu: React.FC<IProps> = ({ children, filter, setFilter }) => {
           alignItems: "flex-start",
         }}
       >
-        <TextInput size="small" />
+        <TextInputStyled size="small" />
         <CustomTabs value={filter} textColor="inherit" onChange={handleFilterChange}>
           <CustomTab label="Все" />
           <CustomTab label="Идет обмен" />

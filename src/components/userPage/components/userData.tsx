@@ -1,34 +1,26 @@
 import React from "react";
 import { Box } from "@material-ui/system";
-import { IRegisterData } from "../../registerInput/registerInput";
 
-export const boilerplate: IRegisterData = {
+export const boilerplate = {
   lastName: "Иванов",
   firstName: "Иван",
   patronymic: "Иванович",
-  index: "980707",
-  city: "Краснодар",
-  street: "Красная",
-  buildingNum: "178",
-  apartament: "3",
+  adress: [
+    {
+      index: "980707",
+      city: "Краснодар",
+      street: "Красная",
+      buildingNum: "178",
+      apartament: "3",
+      building: "",
+    },
+  ],
   mail: "dfdgfd@gf.trt",
-  building: "",
   login: "Asdafasdaf",
   password: "",
 };
 
-const {
-  lastName,
-  firstName,
-  patronymic,
-  index,
-  city,
-  street,
-  buildingNum,
-  building,
-  mail,
-  apartament,
-} = boilerplate;
+const { lastName, firstName, patronymic, adress, mail } = boilerplate;
 
 const UserData: React.FC = () => {
   const userData = {
@@ -54,13 +46,14 @@ const UserData: React.FC = () => {
       <Box sx={userData}>
         <h1 className="page_userPage_subHeader">Адрес:</h1>
         <div>
-          г.{city} ул.{street} д.{buildingNum} {building ? `стр.${building} ` : ""}
-          {apartament ? `кв. ${apartament}` : ""}
+          г.{adress[0].city} ул.{adress[0].street} д.{adress[0].buildingNum}
+          {adress[0].building ? `стр.${adress[0].building} ` : ""}
+          {adress[0].apartament ? `кв. ${adress[0].apartament}` : ""}
         </div>
       </Box>
       <Box sx={userData}>
         <h1 className="page_userPage_subHeader">Индекс:</h1>
-        <div>{index}</div>
+        <div>{adress[0].index}</div>
       </Box>
       <Box sx={userData}>
         <h1 className="page_userPage_subHeader">E-Mail:</h1>

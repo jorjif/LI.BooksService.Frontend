@@ -11,10 +11,6 @@ const UserPage: React.FC = () => {
   const startChanging = () => {
     setChanged(!isChanged);
   };
-
-  const onSubmitBoilerplate = (value: object) => {
-    console.log(value);
-  };
   return (
     <Paper elevation={3} className="page_paper">
       <Box className="page_userPage_imgBox">
@@ -25,13 +21,7 @@ const UserPage: React.FC = () => {
           <h1 className="page_userPage_header">{boilerplate.login}</h1>
           <Pencil onClick={startChanging} />
         </Box>
-        {isChanged ? (
-          <RegisterInput onSubmit={(value: object) => onSubmitBoilerplate(value)}>
-            Сохранить
-          </RegisterInput>
-        ) : (
-          <UserData />
-        )}
+        {isChanged ? <RegisterInput>Сохранить</RegisterInput> : <UserData />}
       </Box>
     </Paper>
   );

@@ -1,22 +1,25 @@
 import { IRegisterData } from "./registerInput";
 
-interface IErrors {
-  firstName?: string;
-  lastName?: string;
-  patronymic?: string;
+interface IAdressErrors {
   city?: string;
   street?: string;
   building?: string;
   buildingNum?: string;
   apartament?: string;
   index?: string;
+}
+interface IErrors {
+  firstName?: string;
+  lastName?: string;
+  patronymic?: string;
+  adress?: IAdressErrors[];
   mail?: string;
   login?: string;
   password?: string;
 }
 
 export const registerValidation = (values: IRegisterData) => {
-  const errors: IErrors = {};
+  const errors: IErrors = { adress: [] };
   if (!values.firstName) {
     errors.firstName = "Введите имя";
   } else if (!/^[А-ЯЁа-яё]{1,25}$/.test(values.firstName)) {
@@ -48,31 +51,35 @@ export const registerValidation = (values: IRegisterData) => {
     errors.password =
       "Логин должен быть от 8 символов содержать минимум 1 заглавную и цифру";
   }
-  if (!values.index) {
-    errors.index = "Введите индекс";
-  } else if (!/^\d{6}$/.test(values.index)) {
-    errors.index = "6 цифр";
-  }
-  if (!values.city) {
-    errors.city = "Введите город";
-  } else if (!/^[А-ЯЁа-яё]{0,15}$/.test(values.patronymic)) {
-    errors.city = "до 15 букв";
-  }
-  if (!values.street) {
-    errors.street = "Введите улицу";
-  } else if (!/^[А-ЯЁа-яё]+(.*-?)[А-ЯЁа-яё]+(.{1,25})$/.test(values.street)) {
-    errors.street = "до 25 букв и дефиса";
-  }
-  if (!values.buildingNum) {
-    errors.buildingNum = "Введите номер дома";
-  } else if (!/^\d{1,3}[А-ЯЁа-яё]?$/.test(values.buildingNum)) {
-    errors.buildingNum = "до 2 цифр";
-  }
-  if (!/^\d{0,3}$/.test(values.apartament)) {
-    errors.apartament = "до 3 цифр";
-  }
-  if (!/^\d{0,1}[А-ЯЁа-яё]?$/.test(values.building)) {
-    errors.building = "до 2зн";
-  }
+  /*values.adress.forEach((adress, index) => {
+    if (!adress.index) {
+      !errors.adress[index] ? errors.adress[index] = {} : null
+      errors.adress[index].index = "Введите индекс";
+    } else if (!/^\d{6}$/.test(adress.index)) {
+      errors.adress[index].index = "6 цифр";
+    }
+    if (!adress.city) {
+      errors.adress[index].city = "Введите город";
+    } else if (!/^[А-ЯЁа-яё]{0,15}$/.test(adress.city)) {
+      errors.adress[index].city = "до 15 букв";
+    }
+    if (!adress.street) {
+      errors.adress[index].street = "Введите улицу";
+    } else if (!/^[А-ЯЁа-яё]+(.*-?)[А-ЯЁа-яё]+(.{1,25})$/.test(adress.street)) {
+      errors.adress[index].street = "до 25 букв и дефиса";
+    }
+    if (!adress.buildingNum) {
+      errors.adress[index].buildingNum = "Введите номер дома";
+    } else if (!/^\d{1,3}[А-ЯЁа-яё]?$/.test(adress.buildingNum)) {
+      errors.adress[index].buildingNum = "до 2 цифр";
+    }
+    if (!/^\d{0,3}$/.test(adress.apartament)) {
+      errors.adress[index].apartament = "до 3 цифр";
+    }
+    if (!/^\d{0,1}[А-ЯЁа-яё]?$/.test(adress.building)) {
+      errors.adress[index].building = "до 2зн";
+    }
+  });
+*/
   return errors;
 };

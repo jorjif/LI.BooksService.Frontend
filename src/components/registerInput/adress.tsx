@@ -39,7 +39,7 @@ const AdressInput: React.FC<IProps> = ({ num }) => {
     marginRight: "16px",
   };
   return (
-    <Box>
+    <Box sx={{ maxWidth: "560px" }}>
       <Box sx={boxStyle}>
         <Box sx={doubleBoxLeft}>
           <TextInput label="Город" name={`adress[${num}].city`} required />

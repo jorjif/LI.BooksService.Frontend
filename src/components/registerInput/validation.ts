@@ -19,7 +19,7 @@ interface IErrors {
 }
 
 export const registerValidation = (values: IRegisterData) => {
-  const errors: IErrors = { adress: [] };
+  const errors: any = { adress: [] };
   if (!values.firstName) {
     errors.firstName = "Введите имя";
   } else if (!/^[А-ЯЁа-яё]{1,25}$/.test(values.firstName)) {
@@ -51,9 +51,9 @@ export const registerValidation = (values: IRegisterData) => {
     errors.password =
       "Логин должен быть от 8 символов содержать минимум 1 заглавную и цифру";
   }
-  /*values.adress.forEach((adress, index) => {
+  values.adress.forEach((adress, index) => {
+    errors.adress[index] = {};
     if (!adress.index) {
-      !errors.adress[index] ? errors.adress[index] = {} : null
       errors.adress[index].index = "Введите индекс";
     } else if (!/^\d{6}$/.test(adress.index)) {
       errors.adress[index].index = "6 цифр";
@@ -80,6 +80,6 @@ export const registerValidation = (values: IRegisterData) => {
       errors.adress[index].building = "до 2зн";
     }
   });
-*/
+
   return errors;
 };

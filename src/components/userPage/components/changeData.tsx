@@ -12,7 +12,9 @@ const EditData: React.FC = () => {
       initialValues={registerInitValues}
       onSubmit={(val) => console.log(val)}
     >
-      <RegisterInput />
+      <Form>
+        <RegisterInput />
+      </Form>
     </Formik>
   );
 };

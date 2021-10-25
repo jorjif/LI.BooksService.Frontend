@@ -1,12 +1,10 @@
 @use "../../variables" as var;
 .page_frame {
   &_bg {
-    z-index: 0;
-    position: relative;
     height: 100%;
     width: 100%;
-    background: var.$background center / contain repeat url(./assets/bg.png);
-    background-size: 250px;
+    background: var.$background center repeat url(./assets/bg.png);
+    background-size: 170px;
     overflow-x: hidden;
   }
   /*&_bg::before {
@@ -29,7 +27,7 @@
     width: calc(100% - 4rem);
     height: calc(100% - 4rem);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     &_startPage {

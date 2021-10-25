@@ -4,7 +4,7 @@ import { privateRoutes, publicRoutes, routeNames } from "../../routes";
 import PageFrame from "../pageFrame/pageFrame";
 
 const AppRouter: React.FC = () => {
-  const auth = false;
+  const auth = true;
   return auth ? (
     <PageFrame>
       <Switch>

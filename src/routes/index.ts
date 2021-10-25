@@ -25,9 +25,9 @@ export const publicRoutes: IRoute[] = [
   { path: routeNames.START, exact: true, component: MainPage },
   { path: routeNames.LOGIN, exact: true, component: AuthorizationPage },
   { path: routeNames.REGISTER, exact: true, component: Registration },
-  { path: routeNames.EXCHANGE, exact: true, component: Exchange },
 ];
 export const privateRoutes: IRoute[] = [
   { path: routeNames.TRADES, exact: true, component: TradeList },
   { path: routeNames.PROFILE, exact: true, component: UserPage },
+  { path: routeNames.EXCHANGE, exact: true, component: Exchange },
 ];

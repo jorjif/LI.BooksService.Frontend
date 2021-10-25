@@ -4,12 +4,12 @@
     z-index: 0;
     position: relative;
     height: 100%;
-    height: fit-content;
     width: 100%;
-    background: var.$background;
-    overflow: hidden;
+    background: var.$background center / contain repeat url(./assets/bg.png);
+    background-size: 250px;
+    overflow-x: hidden;
   }
-  &_bg::before {
+  /*&_bg::before {
     z-index: -1;
     content: "";
     position: absolute;
@@ -20,9 +20,10 @@
     background-image: url(./assets/bg.png);
     background-position: top center;
     background-size: 10em;
+    background-repeat: repeat;
     opacity: 0.1;
     transform: rotate(-45deg);
-  }
+  }*/
   &_main {
     padding: 4rem 0 0 4rem;
     width: calc(100% - 4rem);

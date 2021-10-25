@@ -1,9 +1,9 @@
 import { Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import "./trade.scss";
-import TradeItem, { ITradeItem } from "./tradeItem";
-import TradeListHeader from "./tradeListHeader";
-import TradeMenu from "./tradeMenu";
+import TradeItem, { ITradeItem } from "./components/tradeItem";
+import TradeListHeader from "./components/tradeListHeader";
+import TradeMenu from "./components/tradeMenu";
 
 const boilerplate: ITradeItem[] = [
   {

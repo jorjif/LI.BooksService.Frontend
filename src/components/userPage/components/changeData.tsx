@@ -24,6 +24,7 @@ const EditData: React.FC = () => {
                 {values.adress &&
                   values.adress.map((adress, index) => (
                     <Box key={index}>
+                      <h1 className="page_userPage_subHeader">Адрес {index + 1}</h1>
                       <AdressInput num={index} />
                       <Button
                         variant="contained"
@@ -43,6 +44,11 @@ const EditData: React.FC = () => {
               </Box>
             )}
           </FieldArray>
+          <Box sx={{ display: "flex", justifyContent: "flex-end", m: "16px 0 0 0" }}>
+            <Button className="page_userPage_button" type="submit">
+              Сохранить
+            </Button>
+          </Box>
         </Form>
       )}
     </Formik>

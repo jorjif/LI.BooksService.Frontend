@@ -21,10 +21,10 @@ const TradeMenu: React.FC<IProps> = ({ children, filter, setFilter }) => {
           display: "flex",
           marginBottom: "2rem",
           justifyContent: "space-between",
-          alignItems: "flex-start",
+          alignItems: "flex-end",
         }}
       >
-        <TextInputStyled size="small" />
+        <TextInputStyled size="small" fullWidth={false} />
         <CustomTabs value={filter} textColor="inherit" onChange={handleFilterChange}>
           <CustomTab label="Все" />
           <CustomTab label="Идет обмен" />

@@ -11,6 +11,7 @@ const AppRouter: React.FC = () => {
         {privateRoutes.map((route) => (
           <Route key={route.path} {...route} />
         ))}
+        <Redirect to={routeNames.START} />
       </Switch>
     </PageFrame>
   ) : (

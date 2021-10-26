@@ -5,6 +5,7 @@ import Registration from "../components/registerPage/registration";
 import Exchange from "../components/Exchange/Exchange";
 import TradeList from "../components/tradeList/tradeList";
 import UserPage from "../components/userPage/userPage";
+import MainPageLogged from "../components/mainPage/logged/mainPage";
 
 export interface IRoute {
   path: string;
@@ -30,4 +31,5 @@ export const privateRoutes: IRoute[] = [
   { path: routeNames.TRADES, exact: true, component: TradeList },
   { path: routeNames.PROFILE, exact: true, component: UserPage },
   { path: routeNames.EXCHANGE, exact: true, component: Exchange },
+  { path: routeNames.START, exact: true, component: MainPageLogged },
 ];

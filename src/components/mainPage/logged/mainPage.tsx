@@ -19,7 +19,8 @@ const MainPageLogged: React.FC = () => {
         sx={{
           display: "flex",
           alignItems: "flex-end",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
+          minWidth: "600px",
         }}
       >
         <Link to={routeNames.PROFILE}>

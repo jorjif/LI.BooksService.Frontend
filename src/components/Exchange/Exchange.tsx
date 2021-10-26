@@ -38,7 +38,7 @@ const Exchange: React.FC = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', width: 'calc(100% - 8rem)', height: 'calc(100% - 12rem)', minHeight: '450px' }}>
+    <Box sx={{ display: 'flex', width: 'calc(100% - 8rem)', height: 'calc(100% - 12rem)', minHeight: '450px', maxWidth: '1200px' }}>
       <Paper elevation={10} sx={{ display: 'flex', flexDirection: 'column', width: '100%', p: 4 }}>
         <Box sx={{ height: '64px' }}>
           <Stepper activeStep={step}>

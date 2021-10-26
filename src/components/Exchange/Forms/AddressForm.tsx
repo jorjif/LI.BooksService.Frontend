@@ -2,7 +2,7 @@ import { Grid, Paper, Typography } from '@material-ui/core'
 
 import TextInput from '../Fields/TextInput'
 
-import { ReactComponent as CarImg } from './assets/Car.svg'
+import { ReactComponent as CarImg } from '../assets/Car.svg'
 
 const AddressForm: React.FC = () => (
   <Grid container sx={{ height: '100%' }}>

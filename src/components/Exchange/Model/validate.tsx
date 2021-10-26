@@ -6,7 +6,7 @@ const validate = [
 
     if (!values.bookName) {
       errors.bookName = 'Укажите название книги'
-    } else if (!/^[0-9a-zA-Zа-яёА-ЯЁ"'-.,]{1,50}$/.test(values.bookName)) {
+    } else if (!/^[0-9a-zA-Zа-яёА-ЯЁ "'-.,]{1,50}$/.test(values.bookName)) {
       errors.bookName = 'Только кириллица и латиница, цифры, кавычки, тире, знаки препинания, до 50 знаков'
     }
 

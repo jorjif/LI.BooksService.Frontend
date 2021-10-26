@@ -6,7 +6,7 @@ interface IProps {
   label: string
 }
 
-const TextInput: React.FC<IProps> = (props) => {
+const TextInput: React.FC<IProps> = props => {
   const [field, meta] = useField(props)
 
   return (

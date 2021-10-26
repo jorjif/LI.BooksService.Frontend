@@ -1,4 +1,4 @@
-import { Box, Grid, Card, CardMedia, CardContent, Avatar, Typography } from '@material-ui/core'
+import { Box, Grid, Card, CardMedia, CardContent, Typography } from '@material-ui/core'
 import { useFormikContext } from 'formik'
 
 import { IFormInitialValues } from '../Model/formIinitialValues'

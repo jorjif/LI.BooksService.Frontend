@@ -4,7 +4,10 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#606c38'
-    }
+    },
+    background: {
+      paper: '#fefae0',
+    },
   },
   components: {
     MuiButton: {

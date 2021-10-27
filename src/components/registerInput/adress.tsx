@@ -7,21 +7,21 @@ interface IProps {
 }
 
 export interface IAdressData {
-  city: string;
-  street: string;
-  building: string;
-  buildingNum: string;
-  apartament: string;
-  index: string;
+  addrCity: string;
+  addrStreet: string;
+  addrStructure: string;
+  addrHouse: string;
+  addrApart: string;
+  addrIndex: string;
 }
 
 export const adressInitial: IAdressData = {
-  city: "",
-  street: "",
-  building: "",
-  buildingNum: "",
-  apartament: "",
-  index: "",
+  addrCity: "",
+  addrStreet: "",
+  addrStructure: "",
+  addrHouse: "",
+  addrApart: "",
+  addrIndex: "",
 };
 
 const AdressInput: React.FC<IProps> = ({ num }) => {
@@ -41,24 +41,24 @@ const AdressInput: React.FC<IProps> = ({ num }) => {
     <Box sx={{ maxWidth: "560px" }}>
       <Box sx={boxStyle}>
         <Box sx={doubleBoxLeft}>
-          <TextInput label="Город" name={`adress[${num}].city`} required />
+          <TextInput label="Город" name={`adress[${num}].addrCity`} required />
         </Box>
         <Box sx={doubleBox}>
-          <TextInput label="Индекс" name={`adress[${num}].index`} required />
+          <TextInput label="Индекс" name={`adress[${num}].addrIndex`} required />
         </Box>
       </Box>
       <Box sx={boxStyle}>
         <Box sx={{ flex: 4 }}>
-          <TextInput label="Улица" name={`adress[${num}].street`} required />
+          <TextInput label="Улица" name={`adress[${num}].addrStreet`} required />
         </Box>
         <Box sx={{ flex: 1, m: "0 8px" }}>
-          <TextInput label="Стр." name={`adress[${num}].building`} />
+          <TextInput label="Стр." name={`adress[${num}].addrStructure`} />
         </Box>
         <Box sx={{ flex: 1, m: "0 8px" }}>
-          <TextInput label="Дом" name={`adress[${num}].buildingNum`} required />
+          <TextInput label="Дом" name={`adress[${num}].addrHouse`} required />
         </Box>
         <Box sx={{ flex: 1 }}>
-          <TextInput label="Кв." name={`adress[${num}].apartament`} />
+          <TextInput label="Кв." name={`adress[${num}].addrApart`} />
         </Box>
       </Box>
     </Box>

@@ -53,30 +53,30 @@ export const registerValidation = (values: IRegisterData) => {
   }
   values.adress.forEach((adress, index) => {
     errors.adress[index] = {};
-    if (!adress.index) {
+    if (!adress.addrIndex) {
       errors.adress[index].index = "Введите индекс";
-    } else if (!/^\d{6}$/.test(adress.index)) {
+    } else if (!/^\d{6}$/.test(adress.addrIndex)) {
       errors.adress[index].index = "6 цифр";
     }
-    if (!adress.city) {
+    if (!adress.addrCity) {
       errors.adress[index].city = "Введите город";
-    } else if (!/^[А-ЯЁа-яё]{0,15}$/.test(adress.city)) {
+    } else if (!/^[А-ЯЁа-яё]{0,15}$/.test(adress.addrCity)) {
       errors.adress[index].city = "до 15 букв";
     }
-    if (!adress.street) {
+    if (!adress.addrStreet) {
       errors.adress[index].street = "Введите улицу";
-    } else if (!/^[А-ЯЁа-яё]+(.*-?)[А-ЯЁа-яё]+(.{1,25})$/.test(adress.street)) {
+    } else if (!/^[А-ЯЁа-яё]+(.*-?)[А-ЯЁа-яё]+(.{1,25})$/.test(adress.addrStreet)) {
       errors.adress[index].street = "до 25 букв и дефиса";
     }
-    if (!adress.buildingNum) {
+    if (!adress.addrHouse) {
       errors.adress[index].buildingNum = "Введите номер дома";
-    } else if (!/^\d{1,3}[А-ЯЁа-яё]?$/.test(adress.buildingNum)) {
+    } else if (!/^\d{1,3}[А-ЯЁа-яё]?$/.test(adress.addrHouse)) {
       errors.adress[index].buildingNum = "до 2 цифр";
     }
-    if (!/^\d{0,3}$/.test(adress.apartament)) {
+    if (!/^\d{0,3}$/.test(adress.addrApart)) {
       errors.adress[index].apartament = "до 3 цифр";
     }
-    if (!/^\d{0,1}[А-ЯЁа-яё]?$/.test(adress.building)) {
+    if (!/^\d{0,1}[А-ЯЁа-яё]?$/.test(adress.addrStructure)) {
       errors.adress[index].building = "до 2зн";
     }
   });

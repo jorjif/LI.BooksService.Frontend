@@ -6,19 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { StyledEngineProvider } from "@material-ui/styled-engine";
 
-import { ThemeProvider } from '@material-ui/core';
-import theme from './theme';
+import { ThemeProvider } from "@material-ui/core";
+import theme from "./theme";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ThemeProvider theme={theme}>
-        <StyledEngineProvider injectFirst>
-          <App />
-        </StyledEngineProvider>
-      </ThemeProvider>
-    </Router>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <StyledEngineProvider injectFirst>
+            <App />
+          </StyledEngineProvider>
+        </ThemeProvider>
+      </Router>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

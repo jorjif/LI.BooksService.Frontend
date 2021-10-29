@@ -6,10 +6,14 @@ import { Box } from "@material-ui/system";
 import RegisterInput, { registerInitValues } from "../registerInput/registerInput";
 import { registerValidation } from "../registerInput/validation";
 import "../mainPage/mainPage.scss";
-import { Form, Formik } from "formik";
+import {FieldArray, Form, Formik} from "formik";
 import AdressInput, { adressInitial } from "../registerInput/adress";
+import { useRegisterMutation } from "../../app/store/api/apiSlice";
+import { useDispatch } from "react-redux";
 
 const Registration: React.FC = () => {
+  const [registerUser, { isLoading }] = useRegisterMutation();
+  const dispatch = useDispatch();
   const boxStyles: Object = {
     display: "flex",
     flexDirection: "column",
@@ -23,16 +27,38 @@ const Registration: React.FC = () => {
         <h1 className="page_registerPage_h1">Книгомен</h1>
         <h2 className="page_registerPage_h2">Регистрация</h2>
         <Formik
-          onSubmit={(values) => console.log(values)}
+          onSubmit={ (registerData) => {
+            const {
+              firstName,
+              lastName,
+              secondName,
+              email,
+              userName,
+              password,
+              adress,
+            } = registerData;
+            const adressObj = adress[0];
+            const formData = {
+              firstName,
+              lastName,
+              secondName,
+              email,
+              userName,
+              password,
+              ...adressObj,
+            };
+            //const credentials = await registerUser(formData).unwrap();
+            console.log(registerData);
+          }}
           initialValues={{
             ...registerInitValues,
             adress: [adressInitial],
           }}
-          validate={registerValidation}
+          validate={(values) => registerValidation(values)}
         >
           <Form>
             <RegisterInput />
-            <AdressInput num={0} />
+             <AdressInput num={0} />
             <Box
               sx={{
                 display: "flex",

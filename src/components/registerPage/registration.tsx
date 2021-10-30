@@ -6,14 +6,17 @@ import { Box } from "@material-ui/system";
 import RegisterInput, { registerInitValues } from "../registerInput/registerInput";
 import { registerValidation } from "../registerInput/validation";
 import "../mainPage/mainPage.scss";
-import {FieldArray, Form, Formik} from "formik";
+import { Form, Formik } from "formik";
 import AdressInput, { adressInitial } from "../registerInput/adress";
 import { useRegisterMutation } from "../../app/store/api/apiSlice";
-import { useDispatch } from "react-redux";
+import { IAuthPayload, setCredentials } from "../../app/store/slices/auth";
+import { useAppDispatch } from "../../app/store";
+import { setUserData } from "../../app/store/slices/userData";
+import { saveState } from "../../app/store/localStorage";
 
 const Registration: React.FC = () => {
-  const [registerUser, { isLoading }] = useRegisterMutation();
-  const dispatch = useDispatch();
+  const [registerUser, { isSuccess }] = useRegisterMutation();
+  const dispatch = useAppDispatch();
   const boxStyles: Object = {
     display: "flex",
     flexDirection: "column",
@@ -27,7 +30,7 @@ const Registration: React.FC = () => {
         <h1 className="page_registerPage_h1">Книгомен</h1>
         <h2 className="page_registerPage_h2">Регистрация</h2>
         <Formik
-          onSubmit={ (registerData) => {
+          onSubmit={async (registerData) => {
             const {
               firstName,
               lastName,
@@ -47,8 +50,25 @@ const Registration: React.FC = () => {
               password,
               ...adressObj,
             };
-            //const credentials = await registerUser(formData).unwrap();
-            console.log(registerData);
+            try {
+              const credentials = await registerUser(formData).unwrap();
+              if (isSuccess) {
+                const auth: IAuthPayload = {
+                  id: credentials.userId,
+                  token: credentials.token,
+                };
+                dispatch(setCredentials(auth));
+                saveState(auth);
+                dispatch(
+                  setUserData({
+                    firstName: credentials.firstName,
+                    userName: credentials.userName,
+                  })
+                );
+              }
+            } catch (err) {
+              console.log(err);
+            }
           }}
           initialValues={{
             ...registerInitValues,
@@ -58,7 +78,7 @@ const Registration: React.FC = () => {
         >
           <Form>
             <RegisterInput />
-             <AdressInput num={0} />
+            <AdressInput num={0} />
             <Box
               sx={{
                 display: "flex",

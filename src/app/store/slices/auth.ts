@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
-interface IAuth {
-  user: null | string;
+export interface IAuthSlice {
+  id: null | number;
   token: null | string;
 }
 
-interface IPayload {
-  user: string;
+export interface IAuthPayload {
+  id: number;
   token: string;
 }
 
-const initialState: IAuth = { user: null, token: null };
+const initialState: IAuthSlice = { id: null, token: null };
 
 const authSlice = createSlice({
   name: "auth",
@@ -19,14 +19,18 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      { payload: { user, token } }: PayloadAction<IPayload>
+      { payload: { id, token } }: PayloadAction<IAuthPayload>
     ) => {
-      state.user = user;
+      state.id = id;
       state.token = token;
+    },
+    logOutUser: (state) => {
+      state.id = null;
+      state.token = null;
     },
   },
 });
 
-export const { setCredentials } = authSlice.actions;
+export const { setCredentials, logOutUser } = authSlice.actions;
 export default authSlice.reducer;
-export const selectCurrentUser = (state: RootState) => state.auth.user;
+export const selectCurrentUser = (state: RootState) => state.auth.id;

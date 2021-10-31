@@ -5,7 +5,7 @@ interface IError {
   login?: string;
 }
 
-export const validation = ({ password, login }: ILogin) => {
+export const validation = ({ password, userName}: ILogin) => {
   const errors: IError = {};
   if (!password) {
     errors.password = "Введите пароль";
@@ -15,10 +15,10 @@ export const validation = ({ password, login }: ILogin) => {
     errors.password =
       "Пароль должен быть от 8 символов содержать минимум 1 заглавную и цифру";
   }
-  if (!login) {
+  if (!userName) {
     errors.login = "Введите логин";
   } else if (
-    /[+=-><]/.test(login)
+    /[+=-><]/.test(userName)
     //!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(login)
   ) {
     errors.login = "Логин не должен содержать спецсимволов";

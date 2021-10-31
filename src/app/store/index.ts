@@ -1,9 +1,9 @@
 import { configureStore, ConfigureStoreOptions } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 import { api } from "./api/apiSlice";
 import auth from "./slices/auth";
 import { loadState } from "./localStorage";
 import { expiredTokenHandler } from "./api/authErrorHandling";
+import userData from "./slices/userData";
 const preloadedState = loadState();
 
 export const createStore = (options?: ConfigureStoreOptions["preloadedState"]) =>
@@ -11,6 +11,7 @@ export const createStore = (options?: ConfigureStoreOptions["preloadedState"]) =
     preloadedState,
     reducer: {
       [api.reducerPath]: api.reducer,
+      userData: userData,
       auth,
     },
     middleware: (getDefaultMiddlware) =>
@@ -21,4 +22,3 @@ export const createStore = (options?: ConfigureStoreOptions["preloadedState"]) =
 export const store = createStore();
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -10,12 +10,12 @@ import { Form, Formik } from "formik";
 import AdressInput, { adressInitial } from "../registerInput/adress";
 import { useRegisterMutation } from "../../app/store/api/apiSlice";
 import { IAuthPayload, setCredentials } from "../../app/store/slices/auth";
-import { useAppDispatch } from "../../app/store";
-import { setUserData } from "../../app/store/slices/userData";
+import { IUserData, setUserData } from "../../app/store/slices/userData";
 import { saveState } from "../../app/store/localStorage";
+import { useAppDispatch } from "../../app/hooks/hooks";
 
 const Registration: React.FC = () => {
-  const [registerUser, { isSuccess }] = useRegisterMutation();
+  const [registerUser] = useRegisterMutation();
   const dispatch = useAppDispatch();
   const boxStyles: Object = {
     display: "flex",
@@ -52,20 +52,18 @@ const Registration: React.FC = () => {
             };
             try {
               const credentials = await registerUser(formData).unwrap();
-              if (isSuccess) {
-                const auth: IAuthPayload = {
-                  id: credentials.userId,
-                  token: credentials.token,
-                };
-                dispatch(setCredentials(auth));
-                saveState(auth);
-                dispatch(
-                  setUserData({
-                    firstName: credentials.firstName,
-                    userName: credentials.userName,
-                  })
-                );
-              }
+              const auth: IAuthPayload = {
+                id: credentials.userId,
+                token: credentials.token,
+              };
+              const userData: IUserData = {
+                firstName: credentials.firstName,
+                userName: credentials.userName,
+              };
+              dispatch(setCredentials(auth));
+              dispatch(setUserData(userData));
+
+              saveState({ auth, userData });
             } catch (err) {
               console.log(err);
             }

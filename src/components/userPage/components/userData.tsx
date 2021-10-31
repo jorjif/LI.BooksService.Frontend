@@ -16,7 +16,7 @@ export const boilerplate = {
     },
   ],
   mail: "dfdgfd@gf.trt",
-  login: "Asdafasdaf",
+  userName: "Asdafasdaf",
   password: "",
 };
 

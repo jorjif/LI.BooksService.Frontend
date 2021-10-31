@@ -19,3 +19,23 @@ export interface IUserRegistration {
   identities: any;
   identity: any;
 }
+
+export interface IRegisterData {
+  firstName: string;
+  lastName: string;
+  secondName: string;
+  email: string;
+  userName: string;
+  password: string;
+  addrCity: string;
+  addrStreet: string;
+  addrStructure: string;
+  addrHouse: string;
+  addrApart: string;
+  addrIndex: string;
+}
+
+export interface ILoginBody {
+  userName: string;
+  password: string;
+}

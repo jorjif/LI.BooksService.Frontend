@@ -1,22 +1,9 @@
 import { RootState } from "..";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IUserRegistration } from "./apiTypes";
+import { IUserRegistration, IRegisterData, ILoginBody } from "./apiTypes";
 
 const url = process.env.REACT_APP_URL;
-interface IRegisterData {
-  firstName: string;
-  lastName: string;
-  secondName: string;
-  email: string;
-  userName: string;
-  password: string;
-  addrCity: string;
-  addrStreet: string;
-  addrStructure: string;
-  addrHouse: string;
-  addrApart: string;
-  addrIndex: string;
-}
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: url,
@@ -30,13 +17,27 @@ export const api = createApi({
   }),
   endpoints: (builder) => ({
     register: builder.mutation<IUserRegistration, IRegisterData>({
-      query: (registerData) => ({
+      query: (registerData: IRegisterData) => ({
         url: "User/register",
         method: "POST",
         body: registerData,
       }),
     }),
+    login: builder.mutation<IUserRegistration, ILoginBody>({
+      query: (loginData: ILoginBody) => ({
+        url: "User/login",
+        method: "POST",
+        body: loginData,
+      }),
+    }),
+    getUserRequests: builder.query({
+      query: (id) => ({
+        url: `BookRequest/GetAllUserBookRequest/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation } = api;
+export const { useGetUserRequestsQuery, useRegisterMutation, useLoginMutation } =
+  api;

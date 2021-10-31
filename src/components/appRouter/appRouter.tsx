@@ -1,10 +1,11 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useAuth } from "../../app/hooks/useLogin";
 import { privateRoutes, publicRoutes, routeNames } from "../../routes";
 import PageFrame from "../pageFrame/pageFrame";
 
 const AppRouter: React.FC = () => {
-  const auth = false;
+  const auth = !!useAuth();
   return auth ? (
     <PageFrame>
       <Switch>

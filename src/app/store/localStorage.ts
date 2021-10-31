@@ -1,4 +1,10 @@
 import { IAuthSlice } from "./slices/auth";
+import { IUserData } from "./slices/userData";
+
+interface ILocalStorage {
+  auth: IAuthSlice;
+  userData: IUserData;
+}
 
 export const loadState = () => {
   try {
@@ -13,7 +19,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: IAuthSlice) => {
+export const saveState = (state: ILocalStorage) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);

@@ -18,7 +18,7 @@ const UserPage: React.FC = () => {
       </Box>
       <Box>
         <Box component="header" sx={{ display: "flex", alignItems: "center" }}>
-          <h1 className="page_userPage_header">{boilerplate.login}</h1>
+          <h1 className="page_userPage_header">{boilerplate.userName}</h1>
           <Pencil onClick={startChanging} className="page_userPage_edit" />
         </Box>
         {isChanged ? <EditData /> : <UserData />}

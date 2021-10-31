@@ -4,5 +4,5 @@ import { useMemo } from "react";
 
 export const useAuth = () => {
   const id = useAppSelector(selectCurrentUser);
-  return useMemo(() => ({ id }), [id]);
+  return useMemo(() => id, [id]);
 };

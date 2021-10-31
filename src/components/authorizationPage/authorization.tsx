@@ -7,7 +7,7 @@ import "./authorization.scss";
 
 export interface ILogin {
   password: string;
-  login: string;
+  userName: string;
 }
 
 const AuthorizationPage: React.FC = () => {

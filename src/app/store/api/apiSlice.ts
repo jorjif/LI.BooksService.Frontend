@@ -32,7 +32,7 @@ export const api = createApi({
     }),
     getUserRequests: builder.query({
       query: (id) => ({
-        url: `BookRequest/GetAllUserBookRequest/${id}`,
+        url: `BookRequest/GetAllUserBookRequests/${id}`,
         method: "GET",
       }),
     }),

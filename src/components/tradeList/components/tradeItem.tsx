@@ -2,30 +2,52 @@ import { Box } from "@material-ui/system";
 import React from "react";
 
 export interface ITradeItem {
-  number: number;
+  exchangeListId: number;
   bookName: string;
-  author: string;
-  status: string;
-  creationDate: Date;
-  lastUpdate: Date;
+  autor: string;
+  status: number;
+  createDate: Date;
+  updateDate: Date;
 }
+
+const enum requestStatus {
+  NEW = 1,
+  IN_PROCESS = 2,
+  CLOSED = 3,
+}
+
+const statusSwitch = (tradeFilter: number) => {
+  switch (tradeFilter) {
+    case requestStatus.NEW:
+      return "Опубликована";
+    case requestStatus.IN_PROCESS:
+      return "Идет обмен";
+    case requestStatus.CLOSED:
+      return "Обмен завершен";
+    default:
+      return "Статус неизвестен";
+  }
+};
 
 export const flexSize = (flex: number) => ({
   flex: flex,
 });
 
 const TradeItem: React.FC<ITradeItem> = ({
-  number,
+  exchangeListId,
   bookName,
-  author,
+  autor: author,
   status,
-  creationDate,
-  lastUpdate,
+  createDate,
+  updateDate,
 }) => {
   return (
     <Box sx={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-      <Box className="page_tradePage_cathegory" sx={flexSize(2)}>
-        {number}
+      <Box
+        className="page_tradePage_cathegory"
+        sx={{ ...flexSize(2), minWidth: "49.8px" }}
+      >
+        {exchangeListId}
       </Box>
       <Box className="page_tradePage_cathegory" sx={flexSize(6)}>
         {bookName}
@@ -34,13 +56,13 @@ const TradeItem: React.FC<ITradeItem> = ({
         {author}
       </Box>
       <Box className="page_tradePage_cathegory" sx={flexSize(4)}>
-        {status}
+        {statusSwitch(status)}
       </Box>
       <Box className="page_tradePage_cathegory" sx={flexSize(2)}>
-        {creationDate.toLocaleDateString()}
+        {new Date(createDate).toLocaleDateString()}
       </Box>
       <Box className="page_tradePage_cathegory" sx={flexSize(2)}>
-        {lastUpdate.toLocaleDateString()}
+        {new Date(updateDate).toLocaleDateString()}
       </Box>
     </Box>
   );

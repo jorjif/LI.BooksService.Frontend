@@ -34,7 +34,7 @@ const TradeMenu: React.FC<IProps> = ({ children, filter, setFilter }) => {
       {children}
       <Pagination
         shape="rounded"
-        count={10}
+        count={1}
         sx={{ alignSelf: "center", marginTop: "2rem" }}
       />
     </Box>

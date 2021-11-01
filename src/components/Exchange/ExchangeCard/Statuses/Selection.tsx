@@ -38,7 +38,7 @@ const Selection = () => (
 
     <Box sx={{ overflow: 'auto', height: 'calc(100% - 48px)' }} mt={1}>
       {RESULT.map(item => (
-        <Card key={item.id} className="card" sx={{ display: 'flex', margin: 2 }}>
+        <Card key={item.id} variant="outlined" className="card" sx={{ display: 'flex', margin: 2 }}>
           <CardMedia
               component="img"
               sx={{ width: 100 }}

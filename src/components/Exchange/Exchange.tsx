@@ -90,6 +90,7 @@ const Exchange: React.FC = () => {
       <Paper
         elevation={10}
         sx={{ display: "flex", flexDirection: "column", width: "100%", p: 4 }}
+        className="page_paper_column"
       >
         <Box sx={{ height: "64px" }}>
           <Stepper activeStep={step}>

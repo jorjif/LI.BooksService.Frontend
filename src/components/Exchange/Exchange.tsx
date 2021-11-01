@@ -22,21 +22,6 @@ const steps = [
   "Карточка обмена",
 ];
 
-const renderStepContent = (step: number) => {
-  switch (step) {
-    case 0:
-      return <GiveForm />;
-    case 1:
-      return <GetForm />;
-    case 2:
-      return <AddressForm />;
-    case 3:
-      return <ExchangeCard />;
-    default:
-      return <GiveForm />;
-  }
-};
-
 const Exchange: React.FC = () => {
   const [step, setStep] = useState(0);
   const { id } = useAppSelector(({ auth }) => auth);
@@ -44,11 +29,26 @@ const Exchange: React.FC = () => {
   const shouldSend = step === 2;
   const [sendRequest] = useSendExchangeMutation();
   const [getExchangeVariants, { data, error, isLoading, isSuccess, isError }] =
-    useGetExchangeVariantsMutation();
+  useGetExchangeVariantsMutation();
   const [getAdress] = useGetAdressMutation();
-
+  
   const handleReset = () => setStep(0);
   const handleBack = () => setStep(step - 1);
+
+  const renderStepContent = (step: number) => {
+    switch (step) {
+      case 0:
+        return <GiveForm />;
+      case 1:
+        return <GetForm />;
+      case 2:
+        return <AddressForm />;
+      case 3:
+        return <ExchangeCard data={data} isLoading={isLoading} isSuccess={isSuccess} isError={isError} />;
+      default:
+        return <GiveForm />;
+    }
+  };
 
   const handleSubmit = async (values: IFormInitialValues, actions: any) => {
     if (shouldSend) {

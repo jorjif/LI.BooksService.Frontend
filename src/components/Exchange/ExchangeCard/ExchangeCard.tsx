@@ -10,7 +10,9 @@ import Selection from './Statuses/Selection'
 import { ReactComponent as CarImg } from '../assets/Car.svg'
 import avatar from '../assets/user-1.jpg'
 
-const ExchangeCard = () => {
+
+
+const ExchangeCard = ({ data, isLoading, isSuccess, isError }: any) => {
   const { values } = useFormikContext<IFormInitialValues>()
 
   return (
@@ -50,7 +52,9 @@ const ExchangeCard = () => {
       </Grid>
 
       <Grid item xs={12} sm={6} pl={2} sx={{ height: 'inherit' }}>
-        <Selection />
+        {isLoading && (<Searching />)}
+        {isSuccess && (<Selection data={data} />)}
+        {isSuccess && data.length === 0 && (<NotFound />)}
       </Grid>
     </Grid>
   )

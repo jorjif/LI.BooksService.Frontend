@@ -11,6 +11,7 @@ import formInitialValues from "./Model/formIinitialValues";
 import validate from "./Model/validate";
 import {
   useGetAdressMutation,
+  useGetExchangeVariantsMutation,
   useSendExchangeMutation,
 } from "../../app/store/api/apiSlice";
 
@@ -21,32 +22,34 @@ const steps = [
   "Карточка обмена",
 ];
 
-const renderStepContent = (step: number) => {
-  switch (step) {
-    case 0:
-      return <GiveForm />;
-    case 1:
-      return <GetForm />;
-    case 2:
-      return <AddressForm />;
-    case 3:
-      return <ExchangeCard />;
-    default:
-      return <GiveForm />;
-  }
-};
-
 const Exchange: React.FC = () => {
   const [step, setStep] = useState(0);
   const { id } = useAppSelector(({ auth }) => auth);
   const isLastStep = step === steps.length - 1;
-  const shouldSend = step === 3;
+  const shouldSend = step === 2;
   const [sendRequest] = useSendExchangeMutation();
+  const [getExchangeVariants, { data, error, isLoading, isSuccess, isError }] =
+  useGetExchangeVariantsMutation();
   const [getAdress] = useGetAdressMutation();
-
+  
   const handleReset = () => setStep(0);
   const handleBack = () => setStep(step - 1);
-  
+
+  const renderStepContent = (step: number) => {
+    switch (step) {
+      case 0:
+        return <GiveForm />;
+      case 1:
+        return <GetForm />;
+      case 2:
+        return <AddressForm />;
+      case 3:
+        return <ExchangeCard data={data} isLoading={isLoading} isSuccess={isSuccess} isError={isError} />;
+      default:
+        return <GiveForm />;
+    }
+  };
+
   const handleSubmit = async (values: IFormInitialValues, actions: any) => {
     if (shouldSend) {
       const dataToSend = {
@@ -67,6 +70,7 @@ const Exchange: React.FC = () => {
           ...dataToSend,
           addressId: adress.id,
         }).unwrap();
+        const exchangeVariants = await getExchangeVariants(request).unwrap();
       } catch (err) {
         console.log(err);
       }
@@ -77,9 +81,7 @@ const Exchange: React.FC = () => {
     setStep(step + 1);
   };
 
-  const handleSkip = () => {
-    
-  };
+  const handleSkip = () => {};
 
   return (
     <Box
@@ -105,7 +107,11 @@ const Exchange: React.FC = () => {
           </Stepper>
         </Box>
 
-        <Formik initialValues={formInitialValues} onSubmit={handleSubmit} validate={validate[step]}>
+        <Formik
+          initialValues={formInitialValues}
+          onSubmit={handleSubmit}
+          validate={validate[step]}
+        >
           {() => (
             <Form
               style={{
@@ -132,15 +138,18 @@ const Exchange: React.FC = () => {
 
                 {step === 2 && (
                   <>
-                    <Button type="submit" onClick={handleSkip}>Пропустить</Button>
+                    <Button type="submit" onClick={handleSkip}>
+                      Пропустить
+                    </Button>
                     <Box sx={{ marginRight: "10px" }} />
                   </>
                 )}
-                
-                {!isLastStep
-                  ? (<Button type="submit">Далее</Button>) 
-                  : (<Button onClick={handleReset}>Новый обмен</Button>)
-                }
+
+                {!isLastStep ? (
+                  <Button type="submit">Далее</Button>
+                ) : (
+                  <Button onClick={handleReset}>Новый обмен</Button>
+                )}
               </Box>
             </Form>
           )}

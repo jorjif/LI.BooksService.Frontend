@@ -8,59 +8,40 @@ import user4 from '../../assets/user-4.jpg'
 
 import './Selection.scss'
 
-const RESULT = [
-  {
-    id: 1,
-    user: 'LexLuthor',
-    avatar: user2,
-    genre: 'Фантастика',
-    accuracy: 98,
-  },
-  {
-    id: 2,
-    user: 'ChloeSallivan',
-    avatar: user3,
-    genre: 'Фантастика',
-    accuracy: 91,
-  },
-  {
-    id: 3,
-    user: 'LanaLang',
-    avatar: user4,
-    genre: 'Научпоп',
-    accuracy: 74,
-  },
-]
+const Selection = ({ data }: any) => {
 
-const Selection = () => (
-  <>
-    <Typography variant="h6" color="primary">Выберите предложение:</Typography>
+  console.log('data', data)
+  
+  return (
+    <>
+      <Typography variant="h6" color="primary">Выберите предложение:</Typography>
 
-    <Box sx={{ overflow: 'auto', height: 'calc(100% - 48px)' }} mt={1}>
-      {RESULT.map(item => (
-        <Card key={item.id} variant="outlined" className="card" sx={{ display: 'flex', margin: 2 }}>
-          <CardMedia
-              component="img"
-              sx={{ width: 100 }}
-              image={item.avatar}
-              alt={item.user}
-          />
+      <Box sx={{ overflow: 'auto', height: 'calc(100% - 48px)' }} mt={1}>
+        {data.map((item: any) => (
+          <Card key={item.autorName} variant="outlined" className="card" sx={{ display: 'flex', margin: 2 }}>
+            <CardMedia
+                component="img"
+                sx={{ width: 100 }}
+                image={user2}
+                alt={item.autorName}
+            />
 
-          <CardContent sx={{ display: 'flex', flexGrow: 1 }}>
-            <Box pr={2} sx={{ flexGrow: 1, margin: 'auto 0' }}>
-              <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                {item.user}
-              </Typography>
-              <Typography variant="h5" component="div">
-                {item.genre}
-              </Typography>
-            </Box>
-            <CircularProgressWithLabel style={{ margin: 'auto 0' }} value={item.accuracy} />
-          </CardContent>
-        </Card>
-      ))}
-    </Box>
-  </>
-)
+            <CardContent sx={{ display: 'flex', flexGrow: 1 }}>
+              <Box pr={2} sx={{ flexGrow: 1, margin: 'auto 0' }}>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary">
+                  {item.autorName}
+                </Typography>
+                <Typography variant="h5" component="div">
+                  {item.dtoVariantes.variantesList[0].userValueCategories[0].category.name}
+                </Typography>
+              </Box>
+              <CircularProgressWithLabel style={{ margin: 'auto 0' }} value={item.dtoVariantes.percentCoincidence} />
+            </CardContent>
+          </Card>
+        ))}
+      </Box>
+    </>
+  )
+}
 
 export default Selection

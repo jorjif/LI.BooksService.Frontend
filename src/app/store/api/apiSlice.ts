@@ -54,6 +54,22 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    getExchangeVariants: builder.mutation<any, number>({
+      query: (id: number) => ({
+        url: `Exchange/variants/${id}`,
+        method: "GET",
+      }),
+    }),
+    sendExchangeConfirmation: builder.mutation<
+      any,
+      { exchangeList1Id: Number; exchangeList2Id: Number }
+    >({
+      query: (body) => ({
+        url: "ExchangeConfirmation",
+        method: "POST",
+        body,
+      }),
+    }),
     sendExchange: builder.mutation<any, any>({
       query: (exchangeData) => ({
         url: "BookRequest/CreateRequestBook",
@@ -72,4 +88,5 @@ export const {
   useRegisterMutation,
   useLoginMutation,
   useSendExchangeMutation,
+  useGetExchangeVariantsMutation,
 } = api;

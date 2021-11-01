@@ -46,8 +46,7 @@ const Exchange: React.FC = () => {
 
   const handleReset = () => setStep(0);
   const handleBack = () => setStep(step - 1);
-  const handleSkip = () => setStep(step + 1);
-
+  
   const handleSubmit = async (values: IFormInitialValues, actions: any) => {
     if (shouldSend) {
       const dataToSend = {
@@ -73,9 +72,13 @@ const Exchange: React.FC = () => {
       }
     }
     if (!isLastStep) actions.setTouched({});
-    else console.log(values);
+    console.log(values);
     actions.setSubmitting(false);
     setStep(step + 1);
+  };
+
+  const handleSkip = () => {
+    
   };
 
   return (
@@ -102,60 +105,46 @@ const Exchange: React.FC = () => {
           </Stepper>
         </Box>
 
-        {step === steps.length ? (
-          <>
-            <p>Ищем подходящие варианты...</p>
+        <Formik initialValues={formInitialValues} onSubmit={handleSubmit} validate={validate[step]}>
+          {() => (
+            <Form
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "calc(100% - 64px)",
+              }}
+            >
+              <Box className="form-content" sx={{ height: "calc(100% - 60px)" }}>
+                {renderStepContent(step)}
+              </Box>
 
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Box sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleReset}>Новый обмен</Button>
-            </Box>
-          </>
-        ) : (
-          <>
-            <Formik initialValues={formInitialValues} onSubmit={handleSubmit}>
-              {() => (
-                <Form
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    height: "calc(100% - 64px)",
-                  }}
-                >
-                  <Box className="form-content" sx={{ height: "calc(100% - 60px)" }}>
-                    {renderStepContent(step)}
-                  </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  height: "36px",
+                  marginTop: "24px",
+                }}
+              >
+                {step !== 0 && <Button onClick={handleBack}>Назад</Button>}
 
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      height: "36px",
-                      marginTop: "24px",
-                    }}
-                  >
-                    {step !== 0 && <Button onClick={handleBack}>Назад</Button>}
+                <Box sx={{ flex: "1 1 auto" }} />
 
-                    <Box sx={{ flex: "1 1 auto" }} />
-
-                    {step === 2 && (
-                      <>
-                        <Button type="submit" onClick={handleSkip}>
-                          Пропустить
-                        </Button>
-                        <Box sx={{ marginRight: "10px" }} />
-                      </>
-                    )}
-
-                    <Button type="submit">
-                      {isLastStep ? "Подтвердить" : "Далее"}
-                    </Button>
-                  </Box>
-                </Form>
-              )}
-            </Formik>
-          </>
-        )}
+                {step === 2 && (
+                  <>
+                    <Button type="submit" onClick={handleSkip}>Пропустить</Button>
+                    <Box sx={{ marginRight: "10px" }} />
+                  </>
+                )}
+                
+                {!isLastStep
+                  ? (<Button type="submit">Далее</Button>) 
+                  : (<Button onClick={handleReset}>Новый обмен</Button>)
+                }
+              </Box>
+            </Form>
+          )}
+        </Formik>
       </Paper>
     </Box>
   );

@@ -10,18 +10,21 @@ import './Selection.scss'
 
 const RESULT = [
   {
+    id: 1,
     user: 'LexLuthor',
     avatar: user2,
     genre: 'Фантастика',
     accuracy: 98,
   },
   {
+    id: 2,
     user: 'ChloeSallivan',
     avatar: user3,
     genre: 'Фантастика',
     accuracy: 91,
   },
   {
+    id: 3,
     user: 'LanaLang',
     avatar: user4,
     genre: 'Научпоп',
@@ -35,7 +38,7 @@ const Selection = () => (
 
     <Box sx={{ overflow: 'auto', height: 'calc(100% - 48px)' }} mt={1}>
       {RESULT.map(item => (
-        <Card className="card" sx={{ display: 'flex', margin: 2 }}>
+        <Card key={item.id} className="card" sx={{ display: 'flex', margin: 2 }}>
           <CardMedia
               component="img"
               sx={{ width: 100 }}

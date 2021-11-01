@@ -8,7 +8,7 @@ interface IAdressErrors {
   addrApart?: string;
   addrIndex?: string;
 }
-interface IErrors {
+/*interface IErrors {
   firstName?: string;
   lastName?: string;
   secondName?: string;
@@ -16,7 +16,7 @@ interface IErrors {
   mail?: string;
   login?: string;
   password?: string;
-}
+}*/
 
 export const registerValidation = (values: IRegisterData) => {
   const errors: any = {};
@@ -52,10 +52,10 @@ export const registerValidation = (values: IRegisterData) => {
       "Логин должен быть от 8 символов содержать минимум 1 заглавную и цифру";
   }
   if (values.adress.length > 0) {
-      //creating array for addresses
+    //creating array for addresses
     const adressesErrors: any = [];
     values.adress.forEach((adress, index) => {
-        //for each adress we creating empty object
+      //for each adress we creating empty object
       const adressErrors: IAdressErrors = {};
       if (!adress.addrIndex) {
         adressErrors.addrIndex = "Введите индекс";
@@ -83,7 +83,7 @@ export const registerValidation = (values: IRegisterData) => {
         adressErrors.addrApart = "до 3 цифр";
       }
       if (!/^\d?[А-ЯЁа-яё]?$/.test(adress.addrStructure)) {
-          adressErrors.addrStructure = "до 2зн";
+        adressErrors.addrStructure = "до 2зн";
       }
       //pushing empty object to our errors array leads to bugs in formik
       if (Object.keys(adressErrors).length > 0) adressesErrors[index] = adressErrors;

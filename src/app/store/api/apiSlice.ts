@@ -48,6 +48,12 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    getAdressForUserPage: builder.query({
+      query: (id) => ({
+        url: `UserAddress/GetUserAddress/${id}`,
+        method: "GET",
+      }),
+    }),
     sendExchange: builder.mutation<any, any>({
       query: (exchangeData) => ({
         url: "BookRequest/CreateRequestBook",
@@ -61,6 +67,7 @@ export const api = createApi({
 export const {
   useGetUserQuery,
   useGetAdressMutation,
+  useGetAdressForUserPageQuery,
   useGetUserRequestsQuery,
   useRegisterMutation,
   useLoginMutation,

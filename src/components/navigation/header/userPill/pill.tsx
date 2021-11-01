@@ -1,7 +1,7 @@
 import React from "react";
 import "./pill.scss";
 import { ReactComponent as Exit } from "./exit-logo.svg";
-import defaultImg from "./user-icon.png";
+import defaultImg from "./avatar.png";
 import { Link } from "react-router-dom";
 import { routeNames } from "../../../../routes";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";

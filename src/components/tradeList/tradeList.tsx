@@ -6,6 +6,7 @@ import TradeListHeader from "./components/tradeListHeader";
 import TradeMenu from "./components/tradeMenu";
 import { useGetUserRequestsQuery } from "../../app/store/api/apiSlice";
 import { useAppSelector } from "../../app/hooks/hooks";
+import { LoadRing } from "../loadRing/loadRing";
 
 enum tradesFilter {
   ALL = 0,
@@ -30,19 +31,20 @@ const TradeList: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState(0);
   const id = useAppSelector((store) => store.auth.id);
   const { data, isSuccess } = useGetUserRequestsQuery(id);
-  console.log(data);
 
   return (
     <Paper elevation={3} className="page_paper_column">
       <TradeMenu filter={statusFilter} setFilter={setStatusFilter}>
         <TradeListHeader />
-        {isSuccess
-          ? data
-              .filter((trade: ITradeItem) => filterSwitch(trade, statusFilter))
-              .map((elem: ITradeItem) => (
-                <TradeItem {...elem} key={elem.exchangeListId} />
-              ))
-          : null}
+        {isSuccess ? (
+          data
+            .filter((trade: ITradeItem) => filterSwitch(trade, statusFilter))
+            .map((elem: ITradeItem) => (
+              <TradeItem {...elem} key={elem.exchangeListId} />
+            ))
+        ) : (
+          <LoadRing />
+        )}
       </TradeMenu>
     </Paper>
   );

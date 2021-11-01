@@ -39,3 +39,17 @@ export interface ILoginBody {
   userName: string;
   password: string;
 }
+
+export interface IExchangeRequest {
+  offerList: {
+    authorFirstName: string;
+    authorLastName: string;
+    bookName: string;
+    yearPublishing: Date;
+    isbn?: string;
+    categories: number[];
+  };
+  addressId: number;
+  userId: number;
+  wishListCategories: number[];
+}

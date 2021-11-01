@@ -36,8 +36,33 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    getUser: builder.query({
+      query: (id) => ({
+        url: `User/${id}`,
+        method: "GET",
+      }),
+    }),
+    getAdress: builder.mutation<any, any>({
+      query: (id) => ({
+        url: `UserAddress/GetUserAddress/${id}`,
+        method: "GET",
+      }),
+    }),
+    sendExchange: builder.mutation<any, any>({
+      query: (exchangeData) => ({
+        url: "BookRequest/CreateRequestBook",
+        method: "POST",
+        body: exchangeData,
+      }),
+    }),
   }),
 });
 
-export const { useGetUserRequestsQuery, useRegisterMutation, useLoginMutation } =
-  api;
+export const {
+  useGetUserQuery,
+  useGetAdressMutation,
+  useGetUserRequestsQuery,
+  useRegisterMutation,
+  useLoginMutation,
+  useSendExchangeMutation,
+} = api;

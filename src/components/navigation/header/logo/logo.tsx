@@ -8,7 +8,7 @@ const Logo: React.FC = () => {
       <div className="page_frame_header_logo_icon">
         <BookLogo />
       </div>
-      <h1 className="page_frame_header_logo_name">Book exchange</h1>
+      <h1 className="page_frame_header_logo_name">Книгомен</h1>
     </div>
   );
 };

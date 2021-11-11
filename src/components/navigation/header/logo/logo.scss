@@ -1,0 +1,22 @@
+@use "../../../../variables" as var;
+.page_frame_header_logo {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  &_icon {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &_name {
+    font-weight: 300;
+    color: var.$paper-yellow;
+    font-style: normal;
+    margin: 0;
+  }
+}

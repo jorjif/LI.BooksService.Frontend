@@ -1,0 +1,21 @@
+@use "../../variables" as var;
+@use "../mainPage/mainPage.scss";
+.page_registerPage {
+  &_icon {
+    @extend .page_mainPage_icon;
+  }
+  &_h1 {
+    margin: 8px 0;
+    color: var.$font-green;
+    font-weight: 400;
+  }
+  &_h2 {
+    margin: 0 0 8px 0;
+    color: var.$biege;
+    font-weight: 300;
+  }
+
+  &_button {
+    @extend .page_mainPage_button;
+  }
+}

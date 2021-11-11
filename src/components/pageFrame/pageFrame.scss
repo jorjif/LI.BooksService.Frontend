@@ -1,0 +1,39 @@
+@use "../../variables" as var;
+.page_frame {
+  &_bg {
+    height: 100%;
+    width: 100%;
+    background: var.$background center repeat url(./assets/bg.png);
+    background-size: 170px;
+    overflow-x: hidden;
+  }
+  /*&_bg::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url(./assets/bg.png);
+    background-position: top center;
+    background-size: 10em;
+    background-repeat: repeat;
+    opacity: 0.1;
+    transform: rotate(-45deg);
+  }*/
+  &_main {
+    padding: 4rem 0 0 4rem;
+    width: calc(100% - 4rem);
+    height: calc(100% - 4rem);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    &_startPage {
+      @extend .page_frame_main;
+      width: 100vw;
+      padding-left: 0;
+    }
+  }
+}
